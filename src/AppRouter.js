@@ -8,9 +8,9 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact component={<Home />} />
-        <Route path="/create" component={<Createstack />} />
-        <Route path="/update" component={<Updated />} />
+        <Route path="/" exact element={<Home />} />
+        <Route path="/create" element={<Createstack />} />
+        <Route path="updated/:_id" element={<Updated />} />
       </Routes>
     </Router>
   );

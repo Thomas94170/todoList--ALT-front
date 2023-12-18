@@ -1,4 +1,10 @@
+import Formupdate from "../components/form/formupdate";
+
 function Updated() {
-  return <>mise a jour par id du formulaire</>;
+  return (
+    <>
+      <Formupdate />
+    </>
+  );
 }
 export default Updated;

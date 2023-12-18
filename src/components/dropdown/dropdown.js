@@ -23,9 +23,6 @@ function Dropdown() {
             <li>
               <Link to="/create">Création d'une tâche</Link>
             </li>
-            <li>
-              <Link to="/update">Modification d'une tâche</Link>
-            </li>
           </ul>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 function Task() {
   const [data, setData] = useState([]);
@@ -59,9 +60,7 @@ function Task() {
                   </p>
                 </div>
                 <div className="card-footer">
-                  <a href="#" className="btn btn-primary">
-                    Mettre à jour
-                  </a>
+                  <NavLink to={`/updated/${item._id}`}>Mettre à jour</NavLink>
                 </div>
               </div>
             </div>
