@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../dropdown/dropdowns.css";
 
 function Dropdown() {
@@ -17,19 +18,13 @@ function Dropdown() {
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li>
-              <a class="dropdown-item" href="#">
-                Liste des tâches
-              </a>
+              <Link to="/">Liste des tâches</Link>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
-                Création d'une tâche
-              </a>
+              <Link to="/create">Création d'une tâche</Link>
             </li>
             <li>
-              <a class="dropdown-item" href="#">
-                Modification d'une tâche
-              </a>
+              <Link to="/update">Modification d'une tâche</Link>
             </li>
           </ul>
         </div>
