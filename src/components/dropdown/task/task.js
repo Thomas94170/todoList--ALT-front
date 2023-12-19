@@ -19,8 +19,10 @@ function Task() {
       const response = await fetch("http://localhost:5555/work");
       const result = await response.json();
 
+      const workFinished = result.filter((work) => work.status !== "Terminé");
+
       const tasksWithNickname = await Promise.all(
-        result.map(async (work) => {
+        workFinished.map(async (work) => {
           const nickname = await getNicknameById(work.created_by);
           console.log(`UserID: ${work.created_by}, Nickname: ${nickname}`);
           return { ...work, created_by: nickname };
