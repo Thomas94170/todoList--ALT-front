@@ -24,8 +24,17 @@ function Task() {
       const tasksWithNickname = await Promise.all(
         workFinished.map(async (work) => {
           const nickname = await getNicknameById(work.created_by);
+          const taskAssignedForName = await Promise.all(
+            work.assigned_for.map(async (userId) => {
+              return await getNicknameById(userId);
+            })
+          );
           console.log(`UserID: ${work.created_by}, Nickname: ${nickname}`);
-          return { ...work, created_by: nickname };
+          return {
+            ...work,
+            created_by: nickname,
+            assigned_for: taskAssignedForName.join(", "),
+          };
         })
       );
 
@@ -48,6 +57,9 @@ function Task() {
               <div className="card h-100">
                 <div className="card-body">
                   <h5 className="card-title">Titre: {item.name}</h5>
+                  <p className="card-text">
+                    Attribué pour: {item.assigned_for}
+                  </p>
                   <p className="card-text">Description: {item.description}</p>
                   <p className="card-text">Catégorie: {item.category}</p>
                   <p className="card-text">État: {item.status}</p>

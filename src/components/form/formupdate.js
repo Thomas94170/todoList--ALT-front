@@ -18,7 +18,10 @@ function Formupdate() {
     due_time: "",
     created_on: "",
     updated: getCurrentDate(),
+    assigned_for: [],
   });
+
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     console.log("function useEffect lancée");
@@ -47,7 +50,19 @@ function Formupdate() {
         );
       }
     };
+
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:5555/user");
+        const result = await response.json();
+        setUsers(result);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des utilisateurs", error);
+      }
+    };
+
     fetchTask();
+    fetchUsers();
   }, [_id]);
 
   const handleChange = (e) => {
@@ -55,6 +70,24 @@ function Formupdate() {
       ...taskUpdate,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleCheckboxChange = (userId) => {
+    const isChecked = taskUpdate.assigned_for.includes(userId);
+
+    if (isChecked) {
+      // Si l'utilisateur est déjà coché, le retirez de la liste
+      setTaskUpdate((prevTaskUpdate) => ({
+        ...prevTaskUpdate,
+        assigned_for: prevTaskUpdate.assigned_for.filter((id) => id !== userId),
+      }));
+    } else {
+      // Sinon, l'ajoutez à la liste
+      setTaskUpdate((prevTaskUpdate) => ({
+        ...prevTaskUpdate,
+        assigned_for: [...prevTaskUpdate.assigned_for, userId],
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -73,6 +106,7 @@ function Formupdate() {
         priority: taskUpdate.priority,
         due_time: taskUpdate.due_time,
         updated: getCurrentDate(),
+        assigned_for: taskUpdate.assigned_for,
       }),
     })
       .then((response) => response.json())
@@ -98,6 +132,24 @@ function Formupdate() {
               value={taskUpdate.created_by}
               readOnly
             />
+          </div>
+          <div className="mb-3">
+            <label>
+              Sélectionnez les utilisateurs :
+              {users.map((user) => (
+                <div key={user._id}>
+                  <input
+                    type="checkbox"
+                    id={user._id}
+                    name="assigned_for"
+                    value={user._id}
+                    checked={taskUpdate.assigned_for.includes(user._id)}
+                    onChange={() => handleCheckboxChange(user._id)}
+                  />
+                  <label htmlFor={user._id}>{user.nickname}</label>
+                </div>
+              ))}
+            </label>
           </div>
           <div className="mb-3">
             <label htmlFor="name">Nom de la tâche:</label>

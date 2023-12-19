@@ -16,9 +16,21 @@ function Formcreation() {
     due_time: "",
     created_on: getCurrentDate(),
     updated: getCurrentDate(),
+    assigned_by: "",
   });
 
   const [users, setUsers] = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
+
+  const handleCheckboxChange = (event) => {
+    const { value } = event.target;
+
+    if (selectedUsers.includes(value)) {
+      setSelectedUsers(selectedUsers.filter((user) => user !== value));
+    } else {
+      setSelectedUsers([...selectedUsers, value]);
+    }
+  };
 
   useEffect(() => {
     fetch("http://localhost:5555/user")
@@ -44,7 +56,10 @@ function Formcreation() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        ...formData,
+        assigned_for: selectedUsers,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -67,6 +82,7 @@ function Formcreation() {
       due_time: "",
       created_on: getCurrentDate(),
       updated: getCurrentDate(),
+      assigned_for: "",
     });
   };
 
@@ -92,6 +108,24 @@ function Formcreation() {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="mb-3">
+            <label>
+              Sélectionnez les utilisateurs :
+              {users.map((user) => (
+                <div key={user._id}>
+                  <input
+                    type="checkbox"
+                    id={user._id}
+                    name="assigned_for"
+                    value={user.nickname}
+                    checked={selectedUsers.includes(user.nickname)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label htmlFor={user._id}>{user.nickname}</label>
+                </div>
+              ))}
+            </label>
           </div>
           <div className="mb-3">
             <label htmlFor="name">Nom de la tâche:</label>
