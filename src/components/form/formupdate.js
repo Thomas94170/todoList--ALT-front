@@ -29,6 +29,17 @@ function Formupdate() {
         setTaskUpdate(result);
         console.log("requete effectuée recup des données");
         console.log(result);
+
+        const userNickname = await fetch(
+          `http://localhost:5555/user/${result.created_by}`
+        );
+        const userResult = await userNickname.json();
+        console.log(userResult);
+        setTaskUpdate((prevTaskUpdate) => ({
+          ...prevTaskUpdate,
+          created_by: userResult.nickname,
+        }));
+        console.log(userResult.nickname);
       } catch (error) {
         console.error(
           "Erreur lors de la récupération des détails de la tâche",
@@ -37,7 +48,6 @@ function Formupdate() {
       }
     };
     fetchTask();
-    console.log("useEffect ici");
   }, [_id]);
 
   const handleChange = (e) => {
