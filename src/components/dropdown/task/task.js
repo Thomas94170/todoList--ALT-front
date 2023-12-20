@@ -56,7 +56,15 @@ function Task() {
             <div className="col mb-4" key={index}>
               <div className="card h-100">
                 <div className="card-body">
-                  <h5 className="card-title">Titre: {item.name}</h5>
+                  {item.status !== "À faire" ? (
+                    <h5 className="card-title" style={{ color: "green" }}>
+                      Titre: {item.name}
+                    </h5>
+                  ) : (
+                    <h5 className="card-title" style={{ color: "red" }}>
+                      Titre: {item.name}
+                    </h5>
+                  )}
                   <p className="card-text">
                     Attribué pour: {item.assigned_for}
                   </p>

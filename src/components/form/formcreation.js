@@ -63,11 +63,11 @@ function Formcreation() {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Gérer la réponse de l'API si nécessaire
         console.log("Tâche créée avec succès", data);
+        alert("Tâche enregistrée, vous pouvez retourner à l'écran d'accueil");
       })
       .catch((error) =>
-        console.error("Erreur lors de la création de la tâche", error)
+        console.error("Erreur lors de la création de la tâche" + error)
       );
   };
 
@@ -87,145 +87,148 @@ function Formcreation() {
   };
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <form onSubmit={handleSubmit} className="mt-5">
-          <div className="mb-3">
-            <label htmlFor="created_by">Edité par:</label>
-            <select
-              id="created_by"
-              name="created_by"
-              value={formData.created_by}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Sélectionnez un utilisateur
-              </option>
-              {users.map((user) => (
-                <option key={user._id} value={user.nickname}>
-                  {user.nickname}
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card">
+        <div className="card-body">
+          <h2 className="card-title text-center">Création d'une tâche</h2>
+          <form onSubmit={handleSubmit} className="mt-5">
+            <div className="mb-3">
+              <label htmlFor="created_by">Edité par:</label>
+              <select
+                id="created_by"
+                name="created_by"
+                value={formData.created_by}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>
+                  Sélectionnez un utilisateur
                 </option>
-              ))}
-            </select>
-          </div>
-          <div className="mb-3">
-            <label>
-              Sélectionnez les utilisateurs :
-              {users.map((user) => (
-                <div key={user._id}>
-                  <input
-                    type="checkbox"
-                    id={user._id}
-                    name="assigned_for"
-                    value={user.nickname}
-                    checked={selectedUsers.includes(user.nickname)}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label htmlFor={user._id}>{user.nickname}</label>
-                </div>
-              ))}
-            </label>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="name">Nom de la tâche:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label htmlFor="description">Description:</label>
-            <input
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              required
-            ></input>
-          </div>
-          <div class="mb-3">
-            <label htmlFor="category">Catégorie:</label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label htmlFor="priority">Priorité:</label>
-            <select
-              id="priority"
-              name="priority"
-              value={formData.priority}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Sélectionnez la priorité
-              </option>
-              <option value="Haute">Haute</option>
-              <option value="Moyenne">Moyenne</option>
-              <option value="Basse">Basse</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label htmlFor="status">Statut:</label>
-            <select
-              id="status"
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>
-                Sélectionnez le statut
-              </option>
-              <option value="À faire">À faire</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label htmlFor="due_time">Date d'échéance:</label>
-            <input
-              type="date"
-              id="due_time"
-              name="due_time"
-              value={formData.due_time}
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="created_on">Date de création:</label>
-            <input
-              type="text"
-              id="created_on"
-              name="created_on"
-              value={formData.created_on}
-              readOnly
-            />
+                {users.map((user) => (
+                  <option key={user._id} value={user.nickname}>
+                    {user.nickname}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-3">
+              <label>
+                Sélectionnez le/les utilisateurs :
+                {users.map((user) => (
+                  <div key={user._id}>
+                    <input
+                      type="checkbox"
+                      id={user._id}
+                      name="assigned_for"
+                      value={user.nickname}
+                      checked={selectedUsers.includes(user.nickname)}
+                      onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor={user._id}>{user.nickname}</label>
+                  </div>
+                ))}
+              </label>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="name">Nom de la tâche:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label htmlFor="description">Description:</label>
+              <input
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                required
+              ></input>
+            </div>
+            <div class="mb-3">
+              <label htmlFor="category">Catégorie:</label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label htmlFor="priority">Priorité:</label>
+              <select
+                id="priority"
+                name="priority"
+                value={formData.priority}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>
+                  Sélectionnez la priorité
+                </option>
+                <option value="Haute">Haute</option>
+                <option value="Moyenne">Moyenne</option>
+                <option value="Basse">Basse</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label htmlFor="status">Statut:</label>
+              <select
+                id="status"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>
+                  Sélectionnez le statut
+                </option>
+                <option value="À faire">À faire</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label htmlFor="due_time">Date d'échéance:</label>
+              <input
+                type="date"
+                id="due_time"
+                name="due_time"
+                value={formData.due_time}
+                onChange={handleChange}
+                required
+              />
+              <label htmlFor="created_on">Date de création:</label>
+              <input
+                type="text"
+                id="created_on"
+                name="created_on"
+                value={formData.created_on}
+                readOnly
+              />
 
-            <label htmlFor="updated">Mise à jour:</label>
-            <input
-              type="text"
-              id="updated"
-              name="updated"
-              value={formData.updated}
-              readOnly
-            />
-          </div>
-          <button type="submit" class="btn btn-success">
-            Valider
-          </button>
-          <button type="button" class="btn btn-danger" onClick={handleCancel}>
-            Annuler
-          </button>
-        </form>
+              <label htmlFor="updated">Mise à jour:</label>
+              <input
+                type="text"
+                id="updated"
+                name="updated"
+                value={formData.updated}
+                readOnly
+              />
+            </div>
+            <button type="submit" class="btn btn-success">
+              Valider
+            </button>
+            <button type="button" class="btn btn-danger" onClick={handleCancel}>
+              Annuler
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

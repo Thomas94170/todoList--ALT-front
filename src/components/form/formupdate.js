@@ -112,6 +112,7 @@ function Formupdate() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Tâche mise à jour avec succès", data);
+        alert("Vous pouvez retourner à l'écran d'accueil");
       })
       .catch((error) =>
         console.error("Erreur lors de la mise à jour de la tâche", error)
@@ -119,134 +120,137 @@ function Formupdate() {
   };
 
   return (
-    <>
-      <div className="container mt-3">
-        <h2>Modifier la tâche</h2>
-        <form onSubmit={handleSubmit} className="mt-5">
-          <div className="mb-3">
-            <label htmlFor="created_by">Edité par:</label>
-            <input
-              type="text"
-              id="created_by"
-              name="created_by"
-              value={taskUpdate.created_by}
-              readOnly
-            />
-          </div>
-          <div className="mb-3">
-            <label>
-              Sélectionnez les utilisateurs :
-              {users.map((user) => (
-                <div key={user._id}>
-                  <input
-                    type="checkbox"
-                    id={user._id}
-                    name="assigned_for"
-                    value={user._id}
-                    checked={taskUpdate.assigned_for.includes(user._id)}
-                    onChange={() => handleCheckboxChange(user._id)}
-                  />
-                  <label htmlFor={user._id}>{user.nickname}</label>
-                </div>
-              ))}
-            </label>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="name">Nom de la tâche:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={taskUpdate.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="description">Description:</label>
-            <input
-              id="description"
-              name="description"
-              value={taskUpdate.description}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="category">Catégorie:</label>
-            <input
-              type="text"
-              id="category"
-              name="category"
-              value={taskUpdate.category}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="priority">Priorité:</label>
-            <select
-              id="priority"
-              name="priority"
-              value={taskUpdate.priority}
-              onChange={handleChange}
-              required
-            >
-              <option value="Haute">Haute</option>
-              <option value="Moyenne">Moyenne</option>
-              <option value="Basse">Basse</option>
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="status">Statut:</label>
-            <select
-              id="status"
-              name="status"
-              value={taskUpdate.status}
-              onChange={handleChange}
-              required
-            >
-              <option value="À faire">À faire</option>
-              <option value="En cours">En cours</option>
-              <option value="Terminé">Terminé</option>
-            </select>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="due_time">Date d'échéance:</label>
-            <input
-              type="date"
-              id="due_time"
-              name="due_time"
-              value={taskUpdate.due_time}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="created_on">Date de création:</label>
-            <input
-              type="text"
-              id="created_on"
-              value={taskUpdate.created_on}
-              readOnly
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="updated">Mise à jour:</label>
-            <input
-              type="text"
-              id="updated"
-              name="updated"
-              value={taskUpdate.updated}
-              readOnly
-            />
-          </div>
-          <button type="submit" className="btn btn-success">
-            Enregistrer les modifications
-          </button>
-        </form>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
+      <div className="card">
+        <div className="card-body">
+          <h2 className="card-title text-center">Modifier la tâche</h2>
+          <form onSubmit={handleSubmit} className="mt-5">
+            <div className="mb-3">
+              <label htmlFor="created_by">Edité par:</label>
+              <input
+                type="text"
+                id="created_by"
+                name="created_by"
+                value={taskUpdate.created_by}
+                readOnly
+              />
+            </div>
+            <div className="mb-3">
+              <label>
+                Sélectionnez les utilisateurs :
+                {users.map((user) => (
+                  <div key={user._id}>
+                    <input
+                      type="checkbox"
+                      id={user._id}
+                      name="assigned_for"
+                      value={user._id}
+                      checked={taskUpdate.assigned_for.includes(user._id)}
+                      onChange={() => handleCheckboxChange(user._id)}
+                    />
+                    <label htmlFor={user._id}>{user.nickname}</label>
+                  </div>
+                ))}
+              </label>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="name">Nom de la tâche:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={taskUpdate.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="description">Description:</label>
+              <input
+                id="description"
+                name="description"
+                value={taskUpdate.description}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="category">Catégorie:</label>
+              <input
+                type="text"
+                id="category"
+                name="category"
+                value={taskUpdate.category}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="priority">Priorité:</label>
+              <select
+                id="priority"
+                name="priority"
+                value={taskUpdate.priority}
+                onChange={handleChange}
+                required
+              >
+                <option value="Haute">Haute</option>
+                <option value="Moyenne">Moyenne</option>
+                <option value="Basse">Basse</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="status">Statut:</label>
+              <select
+                id="status"
+                name="status"
+                value={taskUpdate.status}
+                onChange={handleChange}
+                required
+              >
+                <option value="À faire">À faire</option>
+                <option value="En cours">En cours</option>
+                <option value="Terminé">Terminé</option>
+              </select>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="due_time">Date d'échéance:</label>
+              <input
+                type="date"
+                id="due_time"
+                name="due_time"
+                value={taskUpdate.due_time}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="created_on">Date de création:</label>
+              <input
+                type="text"
+                id="created_on"
+                value={taskUpdate.created_on}
+                readOnly
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="updated">Mise à jour:</label>
+              <input
+                type="date"
+                id="updated"
+                name="updated"
+                value={taskUpdate.updated}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-success">
+              Enregistrer les modifications
+            </button>
+          </form>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Formupdate;
