@@ -77,8 +77,8 @@ function Formcreation() {
       name: "",
       description: "",
       category: "",
-      status: "",
-      priority: "",
+      status: "Waiting",
+      priority: "Medium",
       due_time: "",
       created_on: getCurrentDate(),
       updated: getCurrentDate(),
@@ -87,7 +87,7 @@ function Formcreation() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
+    <div className="container vh-100">
       <div className="card">
         <div className="card-body">
           <h2 className="card-title text-center">Creating a task</h2>
@@ -133,6 +133,7 @@ function Formcreation() {
               <label htmlFor="name">Task name:</label>
               <input
                 type="text"
+                className="form-control"
                 id="name"
                 name="name"
                 value={formData.name}
@@ -144,6 +145,7 @@ function Formcreation() {
               <label htmlFor="description">Description:</label>
               <input
                 id="description"
+                className="form-control"
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
@@ -154,6 +156,7 @@ function Formcreation() {
               <label htmlFor="category">Category:</label>
               <input
                 type="text"
+                className="form-control"
                 id="category"
                 name="category"
                 value={formData.category}
@@ -200,6 +203,7 @@ function Formcreation() {
               <label htmlFor="due_time">Due time:</label>
               <input
                 type="date"
+                className="form-control"
                 id="due_time"
                 name="due_time"
                 value={formData.due_time}
@@ -209,6 +213,7 @@ function Formcreation() {
               <label htmlFor="created_on">Created on:</label>
               <input
                 type="text"
+                className="form-control"
                 id="created_on"
                 name="created_on"
                 value={formData.created_on}
@@ -218,6 +223,7 @@ function Formcreation() {
               <label htmlFor="updated">Update:</label>
               <input
                 type="text"
+                className="form-control"
                 id="updated"
                 name="updated"
                 value={formData.updated}

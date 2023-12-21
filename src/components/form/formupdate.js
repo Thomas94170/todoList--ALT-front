@@ -120,7 +120,7 @@ function Formupdate() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
+    <div className="container vh-100">
       <div className="card">
         <div className="card-body">
           <h2 className="card-title text-center">Edit task</h2>
@@ -129,6 +129,7 @@ function Formupdate() {
               <label htmlFor="created_by">Edited by:</label>
               <input
                 type="text"
+                className="form-control"
                 id="created_by"
                 name="created_by"
                 value={taskUpdate.created_by}
@@ -157,6 +158,7 @@ function Formupdate() {
               <label htmlFor="name">Task name:</label>
               <input
                 type="text"
+                className="form-control"
                 id="name"
                 name="name"
                 value={taskUpdate.name}
@@ -168,6 +170,7 @@ function Formupdate() {
               <label htmlFor="description">Description:</label>
               <input
                 id="description"
+                className="form-control"
                 name="description"
                 value={taskUpdate.description}
                 onChange={handleChange}
@@ -178,6 +181,7 @@ function Formupdate() {
               <label htmlFor="category">Category:</label>
               <input
                 type="text"
+                className="form-control"
                 id="category"
                 name="category"
                 value={taskUpdate.category}
@@ -218,6 +222,7 @@ function Formupdate() {
               <label htmlFor="due_time">Due time:</label>
               <input
                 type="date"
+                className="form-control"
                 id="due_time"
                 name="due_time"
                 value={taskUpdate.due_time}
@@ -229,6 +234,7 @@ function Formupdate() {
               <label htmlFor="created_on">Created on:</label>
               <input
                 type="text"
+                className="form-control"
                 id="created_on"
                 value={taskUpdate.created_on}
                 readOnly
@@ -238,6 +244,7 @@ function Formupdate() {
               <label htmlFor="updated">Update:</label>
               <input
                 type="date"
+                className="form-control"
                 id="updated"
                 name="updated"
                 value={taskUpdate.updated}
