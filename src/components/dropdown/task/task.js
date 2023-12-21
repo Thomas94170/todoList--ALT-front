@@ -58,31 +58,25 @@ function Task() {
                 <div className="card-body">
                   {item.status !== "À faire" ? (
                     <h5 className="card-title" style={{ color: "green" }}>
-                      Titre: {item.name}
+                      Title: {item.name}
                     </h5>
                   ) : (
                     <h5 className="card-title" style={{ color: "red" }}>
-                      Titre: {item.name}
+                      Title: {item.name}
                     </h5>
                   )}
-                  <p className="card-text">
-                    Attribué pour: {item.assigned_for}
-                  </p>
+                  <p className="card-text">Assigned for: {item.assigned_for}</p>
                   <p className="card-text">Description: {item.description}</p>
-                  <p className="card-text">Catégorie: {item.category}</p>
-                  <p className="card-text">État: {item.status}</p>
-                  <p className="card-text">Priorité: {item.priority}</p>
-                  <p className="card-text">Date d'échéance: {item.due_time}</p>
-                  <p className="card-text">
-                    Date de création: {item.created_on}
-                  </p>
-                  <p className="card-text">Mise à jour: {item.updated}</p>
-                  <p className="card-text">
-                    Fiche éditée par : {item.created_by}
-                  </p>
+                  <p className="card-text">Category: {item.category}</p>
+                  <p className="card-text">State: {item.status}</p>
+                  <p className="card-text">Priority: {item.priority}</p>
+                  <p className="card-text">Due time: {item.due_time}</p>
+                  <p className="card-text">Created on: {item.created_on}</p>
+                  <p className="card-text">Update: {item.updated}</p>
+                  <p className="card-text">Edited by : {item.created_by}</p>
                 </div>
                 <div className="card-footer">
-                  <NavLink to={`/updated/${item._id}`}>Mettre à jour</NavLink>
+                  <NavLink to={`/updated/${item._id}`}>Update task</NavLink>
                 </div>
               </div>
             </div>

@@ -11,8 +11,8 @@ function Formcreation() {
     name: "",
     description: "",
     category: "",
-    status: "",
-    priority: "",
+    status: "Waiting",
+    priority: "Medium",
     due_time: "",
     created_on: getCurrentDate(),
     updated: getCurrentDate(),
@@ -90,10 +90,10 @@ function Formcreation() {
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card">
         <div className="card-body">
-          <h2 className="card-title text-center">Création d'une tâche</h2>
+          <h2 className="card-title text-center">Creating a task</h2>
           <form onSubmit={handleSubmit} className="mt-5">
             <div className="mb-3">
-              <label htmlFor="created_by">Edité par:</label>
+              <label htmlFor="created_by">Edited by:</label>
               <select
                 id="created_by"
                 name="created_by"
@@ -102,7 +102,7 @@ function Formcreation() {
                 required
               >
                 <option value="" disabled>
-                  Sélectionnez un utilisateur
+                  Select a user
                 </option>
                 {users.map((user) => (
                   <option key={user._id} value={user.nickname}>
@@ -113,7 +113,7 @@ function Formcreation() {
             </div>
             <div className="mb-3">
               <label>
-                Sélectionnez le/les utilisateurs :
+                Select the user(s):
                 {users.map((user) => (
                   <div key={user._id}>
                     <input
@@ -130,7 +130,7 @@ function Formcreation() {
               </label>
             </div>
             <div className="mb-3">
-              <label htmlFor="name">Nom de la tâche:</label>
+              <label htmlFor="name">Task name:</label>
               <input
                 type="text"
                 id="name"
@@ -151,7 +151,7 @@ function Formcreation() {
               ></input>
             </div>
             <div class="mb-3">
-              <label htmlFor="category">Catégorie:</label>
+              <label htmlFor="category">Category:</label>
               <input
                 type="text"
                 id="category"
@@ -162,7 +162,7 @@ function Formcreation() {
               />
             </div>
             <div class="mb-3">
-              <label htmlFor="priority">Priorité:</label>
+              <label htmlFor="priority">Priority:</label>
               <select
                 id="priority"
                 name="priority"
@@ -171,15 +171,15 @@ function Formcreation() {
                 required
               >
                 <option value="" disabled>
-                  Sélectionnez la priorité
+                  Select priority
                 </option>
-                <option value="Haute">Haute</option>
-                <option value="Moyenne">Moyenne</option>
-                <option value="Basse">Basse</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
             <div class="mb-3">
-              <label htmlFor="status">Statut:</label>
+              <label htmlFor="status">Status:</label>
               <select
                 id="status"
                 name="status"
@@ -188,13 +188,16 @@ function Formcreation() {
                 required
               >
                 <option value="" disabled>
-                  Sélectionnez le statut
+                  Select status
                 </option>
-                <option value="À faire">À faire</option>
+                <option value="Waiting">Waiting</option>
+                <option value="In progress">In progress</option>
+                <option value="To be tested">To be tested</option>
+                <option value="Finished">Finished</option>
               </select>
             </div>
             <div class="mb-3">
-              <label htmlFor="due_time">Date d'échéance:</label>
+              <label htmlFor="due_time">Due time:</label>
               <input
                 type="date"
                 id="due_time"
@@ -203,7 +206,7 @@ function Formcreation() {
                 onChange={handleChange}
                 required
               />
-              <label htmlFor="created_on">Date de création:</label>
+              <label htmlFor="created_on">Created on:</label>
               <input
                 type="text"
                 id="created_on"
@@ -212,7 +215,7 @@ function Formcreation() {
                 readOnly
               />
 
-              <label htmlFor="updated">Mise à jour:</label>
+              <label htmlFor="updated">Update:</label>
               <input
                 type="text"
                 id="updated"
@@ -222,10 +225,10 @@ function Formcreation() {
               />
             </div>
             <button type="submit" class="btn btn-success">
-              Valider
+              Confirm
             </button>
             <button type="button" class="btn btn-danger" onClick={handleCancel}>
-              Annuler
+              Cancel
             </button>
           </form>
         </div>

@@ -123,10 +123,10 @@ function Formupdate() {
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="card">
         <div className="card-body">
-          <h2 className="card-title text-center">Modifier la tâche</h2>
+          <h2 className="card-title text-center">Edit task</h2>
           <form onSubmit={handleSubmit} className="mt-5">
             <div className="mb-3">
-              <label htmlFor="created_by">Edité par:</label>
+              <label htmlFor="created_by">Edited by:</label>
               <input
                 type="text"
                 id="created_by"
@@ -137,7 +137,7 @@ function Formupdate() {
             </div>
             <div className="mb-3">
               <label>
-                Sélectionnez les utilisateurs :
+                Select the user(s) :
                 {users.map((user) => (
                   <div key={user._id}>
                     <input
@@ -154,7 +154,7 @@ function Formupdate() {
               </label>
             </div>
             <div className="mb-3">
-              <label htmlFor="name">Nom de la tâche:</label>
+              <label htmlFor="name">Task name:</label>
               <input
                 type="text"
                 id="name"
@@ -175,7 +175,7 @@ function Formupdate() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="category">Catégorie:</label>
+              <label htmlFor="category">Category:</label>
               <input
                 type="text"
                 id="category"
@@ -186,7 +186,7 @@ function Formupdate() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="priority">Priorité:</label>
+              <label htmlFor="priority">Priority:</label>
               <select
                 id="priority"
                 name="priority"
@@ -194,13 +194,13 @@ function Formupdate() {
                 onChange={handleChange}
                 required
               >
-                <option value="Haute">Haute</option>
-                <option value="Moyenne">Moyenne</option>
-                <option value="Basse">Basse</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
             <div className="mb-3">
-              <label htmlFor="status">Statut:</label>
+              <label htmlFor="status">Status:</label>
               <select
                 id="status"
                 name="status"
@@ -208,13 +208,14 @@ function Formupdate() {
                 onChange={handleChange}
                 required
               >
-                <option value="À faire">À faire</option>
-                <option value="En cours">En cours</option>
-                <option value="Terminé">Terminé</option>
+                <option value="Waiting">Waiting</option>
+                <option value="In progress">In progress</option>
+                <option value="To be tested">To be tested</option>
+                <option value="Finished">Finished</option>
               </select>
             </div>
             <div className="mb-3">
-              <label htmlFor="due_time">Date d'échéance:</label>
+              <label htmlFor="due_time">Due time:</label>
               <input
                 type="date"
                 id="due_time"
@@ -225,7 +226,7 @@ function Formupdate() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="created_on">Date de création:</label>
+              <label htmlFor="created_on">Created on:</label>
               <input
                 type="text"
                 id="created_on"
@@ -234,7 +235,7 @@ function Formupdate() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="updated">Mise à jour:</label>
+              <label htmlFor="updated">Update:</label>
               <input
                 type="date"
                 id="updated"
@@ -245,7 +246,7 @@ function Formupdate() {
               />
             </div>
             <button type="submit" className="btn btn-success">
-              Enregistrer les modifications
+              Save
             </button>
           </form>
         </div>
