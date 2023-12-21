@@ -19,7 +19,7 @@ function Task() {
       const response = await fetch("http://localhost:5555/work");
       const result = await response.json();
 
-      const workFinished = result.filter((work) => work.status !== "Terminé");
+      const workFinished = result.filter((work) => work.status !== "Finished");
 
       const tasksWithNickname = await Promise.all(
         workFinished.map(async (work) => {

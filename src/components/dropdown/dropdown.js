@@ -18,10 +18,10 @@ function Dropdown() {
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li>
-              <Link to="/">Liste des tâches</Link>
+              <Link to="/">Task list</Link>
             </li>
             <li>
-              <Link to="/create">Création d'une tâche</Link>
+              <Link to="/create">Create a task</Link>
             </li>
           </ul>
         </div>
