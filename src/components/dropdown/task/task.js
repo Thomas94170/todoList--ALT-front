@@ -56,7 +56,7 @@ function Task() {
             <div className="col mb-4" key={index}>
               <div className="card h-100">
                 <div className="card-body">
-                  {item.status !== "À faire" ? (
+                  {item.status === "In progress" ? (
                     <h5 className="card-title" style={{ color: "green" }}>
                       Title: {item.name}
                     </h5>
